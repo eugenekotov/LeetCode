@@ -1,45 +1,38 @@
 package com.leetcode.task_0025;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution {
 
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode fake = new ListNode(-1);
-        fake.next = head;
-
-        ListNode prev = fake;
+        if (k == 1) {
+            return head;
+        }
         ListNode node = head;
         while (node != null) {
-            ListNode fast = node;
-            int i = 0;
-            while (i < k && fast != null) {
-                fast = fast.next;
+            List<ListNode> nodes = new ArrayList<>();
+            nodes.add(node);
+            node = node.next;
+            int i = 1;
+            while (i < k && node != null) {
+                nodes.add(node);
+                node = node.next;
                 i++;
             }
             if (i < k) {
                 break;
             }
-            // reverse return the new head, node is the tail now
-            // e.g. -1 -> 1 (node) -> 2 -> 3, k = 2
-            // prev = -1, fast = 3, node = 1
-            // prev.next = 2 -> 1 (node) -> -1
-            prev.next = reverse(prev, fast);
-            // move prev pointing to node, current tail
-            prev = node;
-            // 2 -> 1 (node) -> 3
-            node.next = fast;
-            node = fast;
+            switchNodes(nodes);
         }
-        return fake.next;
+        return head;
     }
 
-    private ListNode reverse(ListNode prev, ListNode tail) {
-        ListNode node = prev.next;
-        while (node != tail) {
-            ListNode next = node.next;
-            node.next = prev;
-            prev = node;
-            node = next;
+    private void switchNodes(List<ListNode> nodes) {
+        for (int i = 0; i < nodes.size() / 2; i++) {
+            int val = nodes.get(i).val;
+            nodes.get(i).val = nodes.get(nodes.size() - 1- i).val;
+            nodes.get(nodes.size() - 1- i).val = val;
         }
-        return prev;
     }
 }

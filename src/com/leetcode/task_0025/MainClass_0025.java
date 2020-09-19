@@ -5,10 +5,10 @@ public class MainClass_0025 {
     private static final Solution solution = new Solution();
 
     public static void main(String[] args) {
-//        checkSolution(getList(new int[] { 1, 2, 3, 4, 5 }), 1, getList(new int[] { 1, 2, 3, 4, 5 }));
+        checkSolution(getList(new int[] { 1, 2, 3, 4, 5 }), 1, getList(new int[] { 1, 2, 3, 4, 5 }));
         checkSolution(getList(new int[] { 1, 2, 3, 4, 5 }), 2, getList(new int[] { 2, 1, 4, 3, 5 }));
-//        checkSolution(getList(new int[] { 1, 2, 3, 4, 5 }), 3, getList(new int[] { 3, 2, 1, 4, 5 }));
-//        checkSolution(getList(new int[] { 1,2,3,4}), 4, getList(new int[] { 4, 3, 2, 1}));
+        checkSolution(getList(new int[] { 1, 2, 3, 4, 5 }), 3, getList(new int[] { 3, 2, 1, 4, 5 }));
+        checkSolution(getList(new int[] { 1,2,3,4}), 4, getList(new int[] { 4, 3, 2, 1}));
     }
 
     private static void checkSolution(ListNode node, int k, ListNode expectedResult) {
